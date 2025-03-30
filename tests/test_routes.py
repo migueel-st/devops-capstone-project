@@ -174,7 +174,7 @@ class TestAccountService(TestCase):
         fake_id = 3432414
         response = self.client.get(f"{BASE_URL}/{fake_id}")
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-    
+
     def test_security_headers(self):
         """Should return security headers"""
         response = self.client.get("/", environ_overrides=HTTPS_ENVIRON)
@@ -187,7 +187,7 @@ class TestAccountService(TestCase):
         }
         for key, value in headers.items():
             self.assertEqual(response.headers.get(key), value)
-    
+
     def test_cors_security(self):
         """Should return a CORS header"""
         response = self.client.get('/', environ_overrides=HTTPS_ENVIRON)
