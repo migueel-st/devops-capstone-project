@@ -57,6 +57,7 @@ def create_accounts():
         jsonify(message), status.HTTP_201_CREATED, {"Location": location_url}
     )
 
+
 ######################################################################
 # LIST ALL ACCOUNTS
 ######################################################################
@@ -64,7 +65,7 @@ def create_accounts():
 # ... place you code here to LIST accounts ...
 @app.route("/accounts", methods=["GET"])
 def list_accounts():
-    app.logger.info(f"Request to list Accounts")
+    app.logger.info("Request to list Accounts")
     accounts = Account.all()
     account_list = [account.serialize() for account in accounts]
     app.logger.info(f"Found {len(account_list)} account(s)")
@@ -86,7 +87,6 @@ def read_account(account_id):
     return account.serialize(), status.HTTP_200_OK
 
 
-
 ######################################################################
 # UPDATE AN EXISTING ACCOUNT
 ######################################################################
@@ -103,6 +103,7 @@ def update_account(account_id):
     account.deserialize(request.get_json())
     account.update()
     return account.serialize(), status.HTTP_200_OK
+
 
 ######################################################################
 # DELETE AN ACCOUNT
